@@ -12,7 +12,151 @@
 Прогноз баллов: 50.58
 </p>
   
-  
+  <h2>21 марта, 2026</h2>
+</p>показатель точности модели по выдаче кредита = 69%
+  # ============================================
+# ЗАДАНИЕ 2: Страхование КАСКО
+# ============================================
+
+# Шаг 1: Генерация датасета
+import pandas as pd
+import numpy as np
+
+# Создаем синтетические данные
+np.random.seed(42)
+n_samples = 1000
+
+# Возраст (18-70 лет)
+age = np.random.randint(18, 71, n_samples)
+
+# Стаж вождения (0-40 лет)
+driving_experience = np.random.randint(0, 41, n_samples)
+
+# Число ДТП (0-10)
+accidents = np.random.poisson(2, n_samples)  # среднее 2 ДТП
+
+# Целевая переменная: одобрение КАСКО (1 - одобрено, 0 - отказ)
+# Логика: молодые водители с маленьким стажем и большим числом ДТП получают отказ
+insurance_approved = []
+for i in range(n_samples):
+    score = 0
+    # Возраст
+    if age[i] >= 25 and age[i] <= 60:
+        score += 2
+    elif age[i] >= 18 and age[i] < 25:
+        score += 0
+    else:
+        score += 1
+    
+    # Стаж вождения
+    if driving_experience[i] >= 10:
+        score += 2
+    elif driving_experience[i] >= 5:
+        score += 1
+    else:
+        score += 0
+    
+    # Число ДТП
+    if accidents[i] == 0:
+        score += 2
+    elif accidents[i] <= 2:
+        score += 1
+    else:
+        score += 0
+    
+    # Решение: если score >= 3, то одобряем
+    insurance_approved.append(1 if score >= 3 else 0)
+
+# Создаем DataFrame
+df_casco = pd.DataFrame({
+    'age': age,
+    'driving_experience': driving_experience,
+    'accidents': accidents,
+    'insurance_approved': insurance_approved
+})
+
+print("Первые 10 строк датасета:")
+print(df_casco.head(10))
+print(f"\nВсего записей: {len(df_casco)}")
+print(f"Одобрено: {df_casco['insurance_approved'].sum()} ({df_casco['insurance_approved'].mean()*100:.1f}%)")
+print(f"Отказано: {(1-df_casco['insurance_approved'].mean())*100:.1f}%")
+
+# Шаг 2: Подготовка данных (как на слайдах 3-4)
+# В нашем случае все признаки уже числовые, кодирование не нужно
+
+# Разделение на признаки и целевую переменную
+x = df_casco.drop('insurance_approved', axis=1)
+y = df_casco['insurance_approved']
+
+print("\nПризнаки (X):")
+print(x.head())
+print("\nЦелевая переменная (y):")
+print(y.head())
+
+# Шаг 3: Разбиение на тренировочную и тестовую выборки (слайд 6)
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    x,                    # Признаки (возраст, стаж, ДТП)
+    y,                    # Цель (одобрение КАСКО)
+    test_size=0.2,        # 20% данных уйдет в тест, 80% - в обучение
+    random_state=42       # Фиксирует случайность для повторяемости результата
+)
+
+print(f"\nРазмер тренировочной выборки: {len(X_train)}")
+print(f"Размер тестовой выборки: {len(X_test)}")
+
+# Шаг 4: Создание дерева решений (слайд 7)
+from sklearn.tree import DecisionTreeClassifier
+
+tree = DecisionTreeClassifier(max_depth=5, random_state=42)
+print("\nДерево решений создано!")
+print(f"Параметры: max_depth=5, random_state=42")
+
+# Шаг 5: Обучение и проверка (слайд 8)
+# Обучаем дерево на тренировочных данных
+tree.fit(X_train, y_train)
+print("\nДерево обучено на тренировочных данных!")
+
+# Проверяем работу дерева на тестовой части
+accuracy = tree.score(X_test, y_test)
+print(f"\n{'='*50}")
+print(f"ТОЧНОСТЬ МОДЕЛИ (accuracy): {accuracy:.4f} ({accuracy*100:.2f}%)")
+print(f"{'='*50}")
+
+# Дополнительная информация
+from sklearn.metrics import classification_report, confusion_matrix
+
+# Предсказания на тестовой выборке
+y_pred = tree.predict(X_test)
+
+print("\nМатрица ошибок:")
+print(confusion_matrix(y_test, y_pred))
+
+print("\nОтчет о классификации:")
+print(classification_report(y_test, y_pred, target_names=['Отказ', 'Одобрено']))
+
+# Визуализация дерева (слайд 9)
+from sklearn.tree import plot_tree
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(20, 10))
+plot_tree(
+    tree,
+    feature_names=x.columns,
+    class_names=['Отказ', 'Одобрено'],
+    filled=True,
+    rounded=True,
+    fontsize=10
+)
+plt.title("Дерево решений для страхования КАСКО")
+plt.show()
+
+# Важность признаков
+print("\nВажность признаков:")
+for feature, importance in zip(x.columns, tree.feature_importances_):
+    print(f"{feature}: {importance:.4f}")
+</p>
 
     
 <h2>Создано: 17 февраля 2026</h2>
