@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Дневник исследований | Светлые заметки</title>
+  <title>Дневник исследований | Природные заметки</title>
   <style>
     /* ========== RESET & ГЛОБАЛЬНЫЕ СТИЛИ ========== */
     * {
@@ -12,29 +12,47 @@
       box-sizing: border-box;
     }
 
-    /* ========== НОВЫЙ СВЕТЛЫЙ ВОЗДУШНЫЙ ФОН ========== */
+    /* ========== ЗЕЛЁНЫЙ ПРИРОДНЫЙ ФОН (мягкий лесной градиент) ========== */
     body {
-      background: linear-gradient(135deg, #fff9f0 0%, #ffe8d6 100%);
+      background: linear-gradient(145deg, #d8e9d4 0%, #bdd8b0 45%, #a8c99a 100%);
       font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Roboto', sans-serif;
-      color: #3d3226;
+      color: #2c3a23;
       padding: 2rem 1.5rem;
       line-height: 1.55;
       min-height: 100vh;
+      position: relative;
     }
 
-    /* ========== КОНТЕЙНЕР ДНЕВНИКА ========== */
+    /* Лёгкая текстурная маска — "солнечный свет сквозь листву" */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle at 10% 20%, rgba(245, 255, 220, 0.2) 2%, transparent 2.5%),
+                        radial-gradient(circle at 85% 70%, rgba(210, 240, 170, 0.25) 1.5%, transparent 2%);
+      background-size: 48px 48px, 62px 62px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ========== КОНТЕЙНЕР ДНЕВНИКА (светлая плашка с прозрачностью) ========== */
     .diary-container {
       max-width: 1100px;
       margin: 0 auto;
-      background: rgba(255, 252, 245, 0.92);
-      backdrop-filter: blur(2px);
-      border-radius: 2rem;
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 215, 170, 0.5);
+      background: rgba(255, 253, 245, 0.94);
+      backdrop-filter: blur(3px);
+      border-radius: 2.2rem;
+      box-shadow: 0 25px 45px -12px rgba(40, 55, 20, 0.35), 0 0 0 1px rgba(165, 200, 130, 0.4);
       padding: 2rem 2rem 3rem;
       transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
     }
 
-    /* ========== ШРИФТ PUDELINKA ========== */
+    /* ========== ШРИФТ PUDELINKA (опционально, если нужен) ========== */
     @font-face {
       font-family: "Pudelinka";
       src: url("Fonts/pudelinka.ttf") format('truetype');
@@ -47,53 +65,53 @@
       font-family: "Pudelinka", 'Georgia', cursive;
       font-size: 1.8rem;
       text-align: center;
-      color: #c27e3a;
-      background: linear-gradient(145deg, #fff5e8, #ffefdf);
-      padding: 1.6rem 1rem;
+      color: #4f6b3a;
+      background: linear-gradient(135deg, #f4fae8, #e9f3df);
+      padding: 1.5rem 1rem;
       border-radius: 3rem;
       margin-bottom: 2.5rem;
-      border: 1px solid #ffe0c0;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+      border: 1px solid #cde0bb;
+      box-shadow: 0 6px 14px rgba(80, 100, 40, 0.1);
       font-weight: normal;
       letter-spacing: 0.8px;
     }
 
     .hero-quote::before {
-      content: "🌸";
-      font-size: 1.8rem;
-      margin-right: 10px;
+      content: "🌿";
+      font-size: 1.9rem;
+      margin-right: 12px;
     }
 
     .hero-quote::after {
-      content: "🌸";
-      font-size: 1.8rem;
-      margin-left: 10px;
+      content: "🍃";
+      font-size: 1.9rem;
+      margin-left: 12px;
     }
 
-    /* ========== КАРТОЧКИ ЗАПИСЕЙ (СВЕТЛЫЕ, ЧИСТЫЕ) ========== */
+    /* ========== КАРТОЧКИ ЗАПИСЕЙ (свежая мята) ========== */
     .entry {
       background: #ffffff;
       border-radius: 1.5rem;
       padding: 1.6rem 2rem;
       margin-bottom: 1.8rem;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 6px 14px rgba(60, 80, 30, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
-      border: 1px solid #feeddd;
+      border: 1px solid #ddecd0;
     }
 
     .entry:hover {
       transform: translateY(-3px);
-      box-shadow: 0 16px 28px -10px rgba(0, 0, 0, 0.12);
-      border-color: #ffe0c4;
+      box-shadow: 0 18px 30px -12px rgba(60, 85, 35, 0.2);
+      border-color: #c2ddac;
     }
 
-    /* ========== ЗАГОЛОВКИ ========== */
+    /* ========== ЗАГОЛОВКИ (землистые, но свежие) ========== */
     h2 {
       font-size: 1.85rem;
       font-weight: 600;
-      color: #b45f2b;
-      border-left: 5px solid #f0bc7a;
-      padding-left: 1.1rem;
+      color: #4f6a36;
+      border-left: 5px solid #9bc06e;
+      padding-left: 1rem;
       margin-bottom: 1rem;
       margin-top: 0;
       letter-spacing: -0.3px;
@@ -102,38 +120,38 @@
     h3 {
       font-size: 1.4rem;
       font-weight: 600;
-      color: #c57f48;
+      color: #5c8242;
       margin: 1.1rem 0 0.7rem 0;
       display: inline-block;
-      border-bottom: 2px solid #f7d9b5;
+      border-bottom: 2px solid #d4e8c2;
       padding-bottom: 0.1rem;
     }
 
     h4 {
       font-size: 1.2rem;
       font-weight: 600;
-      color: #d69555;
+      color: #6f9950;
       margin: 0.7rem 0 0.4rem;
     }
 
-    /* ========== ТЕКСТ И ТИПОГРАФИКА ========== */
+    /* ========== ТЕКСТ ========== */
     p {
       margin-bottom: 0.75rem;
       line-height: 1.55;
-      color: #4a3b2c;
+      color: #3c4d2f;
     }
 
     a {
-      color: #d27f3c;
+      color: #4f843b;
       text-decoration: none;
       font-weight: 500;
-      border-bottom: 1px solid #f8cfaa;
+      border-bottom: 1px solid #cde0bb;
       transition: 0.2s;
     }
 
     a:hover {
-      color: #aa5a24;
-      border-bottom-color: #d27f3c;
+      color: #2c5e1a;
+      border-bottom-color: #7db34b;
     }
 
     ul, ol {
@@ -142,72 +160,64 @@
 
     li {
       margin: 0.35rem 0;
-      color: #5a4634;
+      color: #445c33;
     }
 
     blockquote {
-      background: #fffbf2;
-      border-left: 5px solid #f0bc7a;
+      background: #f6fcf0;
+      border-left: 5px solid #9bc06e;
       padding: 0.7rem 1.2rem;
       margin: 1rem 0;
       border-radius: 1rem;
-      font-style: normal;
-      color: #8b6240;
+      color: #4b6a33;
       font-weight: 450;
     }
 
     code {
-      background: #fef3e6;
+      background: #eff5e8;
       padding: 0.2rem 0.6rem;
       border-radius: 12px;
       font-family: 'JetBrains Mono', 'Fira Code', monospace;
       font-size: 0.9em;
-      color: #c4712c;
-      border: 1px solid #f7debe;
+      color: #62873d;
+      border: 1px solid #d0e2bd;
     }
 
-    /* ========== ИКОНКИ И БЭЙДЖИ ========== */
+    /* ========== ИКОНКИ ========== */
     img {
       max-width: 44px;
       vertical-align: middle;
       margin-right: 10px;
-      transition: 0.2s;
-    }
-
-    img:hover {
-      transform: scale(1.03);
     }
 
     hr {
       margin: 1.2rem 0;
       border: none;
       height: 2px;
-      background: linear-gradient(90deg, transparent, #f7d9b5, #f0bc7a, #f7d9b5, transparent);
+      background: linear-gradient(90deg, transparent, #cbdfb3, #9bc06e, #cbdfb3, transparent);
     }
 
     .badge-ml {
-      background: #fdf0e2;
-      color: #b7602a;
+      background: #eef5e6;
+      color: #4f6f34;
       font-size: 0.7rem;
       border-radius: 40px;
       padding: 0.2rem 0.9rem;
       display: inline-block;
       margin-right: 0.6rem;
       font-weight: 500;
-      border: 1px solid #fed5aa;
+      border: 1px solid #c9dfb2;
     }
 
-    /* ========== ПОДВАЛ ========== */
     footer {
       text-align: center;
       margin-top: 2.2rem;
       font-size: 0.85rem;
-      color: #bc8f64;
-      border-top: 1px solid #ffe0c4;
+      color: #618a41;
+      border-top: 1px solid #d9e8cb;
       padding-top: 1.5rem;
     }
 
-    /* ========== АДАПТИВНОСТЬ ========== */
     @media (max-width: 720px) {
       body {
         padding: 1rem;
@@ -231,9 +241,8 @@
 <div class="diary-container">
   <div class="hero-quote"> Путешествие в тысячу миль начинается с одного шага <span style="font-family: monospace;">(Лао Цзы)</span></div>
 
-  <!-- ========= ЗАПИСИ В ХРОНОЛОГИЧЕСКОМ ПОРЯДКЕ (от старых к новым) ========= -->
+  <!-- ========= ЗАПИСИ : хронология от старых к новым ========= -->
 
-  <!-- 1 сентября 2025 -->
   <div class="entry">
     <h2>📚 1 сентября, 2025</h2>
     <blockquote>Путешествие в тысячу миль начинается с одного шага (Лао Цзы)</blockquote>
@@ -241,22 +250,20 @@
     <p><span class="badge-ml">✨ иконки:</span> <a href="https://www.flaticon.com/ru/free-icons/2026" title="2026 иконки от Freepik — Flaticon">Freepik / Flaticon</a></p>
   </div>
 
-  <!-- 15 октября 2025 -->
   <div class="entry">
     <h2>🍂 15 октября, 2025</h2>
     <p>🧩 Я сделала Новогодние кроссворды для сайта <a href="https://justmargarret.github.io/just-yourmargarret2/" title="Блог моего друга">«Сайт моего друга»</a>.</p>
   </div>
 
-  <!-- 1 декабря 2025 -->
   <div class="entry">
     <h2>🎄 1 декабря, 2025</h2>
-    <p><img src="Icons/free-icon-new-year-balloons-19034402(1).png" alt="Новый год" style="width:42px;"> Поздравление с Наступающим 2026 годом:  
+<img src="Icons/christmas-bell.png" alt="Новый год">
+  <p>Поздравление с Наступающим 2026 годом:  
       📖 <a href="Congratulations2026.html" title="Читать онлайн">читать онлайн</a>  или  
       📎 <a href="kolyadka.odt" title="Скачать документ ODT">скачать .odt</a>
     </p>
   </div>
 
-  <!-- 13 декабря 2025 -->
   <div class="entry">
     <h2>📅 13 декабря, 2025</h2>
     <p>🎵 Записала колядку:  
@@ -265,162 +272,102 @@
     </p>
   </div>
 
-  <!-- 20 декабря 2025 -->
   <div class="entry">
     <h2>🎓 20 декабря, 2025</h2>
     <p>куратор-2</p>
   </div>
 
-  <!-- 14 января 2026 -->
   <div class="entry">
     <h2>🌐 14 января, 2026</h2>
     <p>📡 Домен: <code>fkmv5018.github.io</code></p>
     <p>📧 <a href="mailto:fkmv5018@gmail.com">Напишите мне</a></p>
   </div>
 
-  <!-- 19 января 2026 -->
   <div class="entry">
     <h2>🔐 19 января, 2026</h2>
     <p><strong>Решение шифров Цезаря:</strong></p>
     <ul>
-      <li><strong>Определение ключей шифра Цезаря:</strong>
-        <ul>
-          <li>а. АПЕЛЬСИН → САЦЬНВЩЮ → Ключ: <code>+18</code></li>
-          <li>б. АБРИКОС → ЫЬЛГЕЙМ → Ключ: <code>-4</code></li>
-        </ul>
+      <li><strong>Определение ключей:</strong>
+        <ul><li>а. АПЕЛЬСИН → САЦЬНВЩЮ → Ключ: <code>+18</code></li><li>б. АБРИКОС → ЫЬЛГЕЙМ → Ключ: <code>-4</code></li></ul>
       </li>
-      <li><strong>Расшифровка сообщений:</strong>
-        <ul>
-          <li>а. ФХНЗКЧ → <strong>ПРИВЕТ</strong> (ключ = 5)</li>
-          <li>б. ЦЩЕБФ → <strong>ВЕСНА</strong> (ключ = 20)</li>
-        </ul>
+      <li><strong>Расшифровка:</strong>
+        <ul><li>а. ФХНЗКЧ → <strong>ПРИВЕТ</strong> (ключ = 5)</li><li>б. ЦЩЕБФ → <strong>ВЕСНА</strong> (ключ = 20)</li></ul>
       </li>
-      <li><strong>Шифрование фамилии «магандалиева» с k = 10:</strong> <code>чкмквткнопк</code></li>
+      <li><strong>Шифрование «магандалиева» (k=10):</strong> <code>чкмквткнопк</code></li>
     </ul>
-    <p>🌍 Домен: <code>fkmv5018.github.io</code></p>
-    <p>📧 <a href="mailto:fkmv5018@gmail.com">Напиши мне</a></p>
+    <p>🌍 Домен: <code>fkmv5018.github.io</code> · 📧 <a href="mailto:fkmv5018@gmail.com">Напиши мне</a></p>
   </div>
 
-  <!-- 17 февраля 2026 -->
   <div class="entry">
     <h2>🖼️ 17 февраля, 2026</h2>
     <h3>Ответ модели компьютерного зрения</h3>
-    <h4>👟 Тест 1: Изображение кроссовок (boots.jpeg)</h4>
-    <ul><li><strong>running shoe: 99.45%</strong> ✅</li><li>shoe store: 0.27%</li><li>clogs: 0.15%</li></ul>
-    <h4>🐕 Тест 2: Изображение собаки</h4>
+    <h4>👟 Тест 1: кроссовки</h4>
+    <ul><li><strong>running shoe: 99.45%</strong></li><li>shoe store: 0.27%</li><li>clogs: 0.15%</li></ul>
+    <h4>🐕 Тест 2: собака (бигль)</h4>
     <ul><li><strong>Beagle: 40.91%</strong></li><li>English foxhound: 30.51%</li><li>Treeing Walker Coonhound: 24.76%</li></ul>
-    <p>✅ Модель верно определила породу (бигль).</p>
-    <h4>🎸 Тест 3: Изображение гитары</h4>
-    <ul><li><strong>acoustic guitar: 98.96%</strong></li><li>electric guitar: 0.87%</li><li>plectrum: 0.11%</li></ul>
-    <p><em>✅ Отлично: акустическая гитара с вероятностью 98.96%.</em></p>
+    <h4>🎸 Тест 3: гитара</h4>
+    <ul><li><strong>acoustic guitar: 98.96%</strong></li><li>electric guitar: 0.87%</li></ul>
   </div>
 
-  <!-- 21 февраля 2026 -->
   <div class="entry">
     <h2>🤖 21 февраля, 2026</h2>
-    <h3>Ответ модели чат-бота (FAQ)</h3>
-    <p><strong>Вопрос:</strong> Сколько ждать мой заказ?</p>
-    <p><strong>Найден FAQ:</strong> «Как быстро доставляется заказ?» <em>(sim=0.706)</em></p>
-    <blockquote>Ответ бот-FAQ: Наш стандартный срок доставки — 3–5 рабочих дней.</blockquote>
+    <h3>FAQ-бот: время доставки</h3>
+    <p><strong>Вопрос:</strong> Сколько ждать мой заказ?<br>
+    <strong>Ответ:</strong> Наш стандартный срок доставки — 3–5 рабочих дней.</p>
   </div>
 
-  <!-- 16 марта 2026 -->
   <div class="entry">
     <h2>📐 16 марта, 2026</h2>
-    <h3>Линейная регрессия: прогноз точности анализа</h3>
-    <p><strong>Уравнение:</strong> <code>Точность = 4.56 × Часы + 53.63</code></p>
-    <ul>
-      <li>Коэффициент: <code>4.5554</code></li>
-      <li>Свободный член: <code>53.625</code></li>
-      <li>Обучающая выборка: 16 записей, тест: 4 записи</li>
-    </ul>
-    <p>📈 <strong>Пример:</strong> студент занимался 5 часов → прогноз баллов: <strong>50.23</strong></p>
-    <p><span class="badge-ml">🐍 Python | scikit-learn | matplotlib</span></p>
+    <h3>Линейная регрессия: точность vs часы</h3>
+    <p>Уравнение: <code>Точность = 4.56 × Часы + 53.63</code></p>
+    <p>Пример: 5 часов занятий → прогноз <strong>50.23</strong> балла.</p>
+    <p><span class="badge-ml">scikit-learn · matplotlib</span></p>
   </div>
 
-  <!-- 23 марта 2026 -->
   <div class="entry">
     <h2>🏦 23 марта, 2026</h2>
-    <h3>Точность моделей машинного обучения</h3>
-    <h4>Кредитная модель (Decision Tree)</h4>
-    <ul><li>Признаки: возраст, зарплата, пол</li><li>Точность: <code>69.00%</code></li></ul>
-    <h4>Модель КАСКО (Decision Tree)</h4>
-    <ul><li>Признаки: возраст, стаж вождения, число ДТП, пол</li><li>Точность: <code>100.00%</code> ⚠️ возможное переобучение</li></ul>
-    <p>💡 <em>Модель КАСКО показывает идеальную точность — стоит проверить данные. Кредитную модель можно улучшить гиперпараметрами.</em></p>
-    <p>📥 <a href="models/credit_model.pkl" download>Скачать модель кредита</a> | 
-       <a href="models/kasko_model.pkl" download>Скачать модель КАСКО</a></p>
+    <p><strong>Кредитная модель:</strong> точность 69%<br>
+    <strong>Модель КАСКО:</strong> точность 100% ⚠️ (возможно переобучение)</p>
+    <p>📥 <a href="models/credit_model.pkl" download>Скачать credit_model.pkl</a></p>
   </div>
 
-  <!-- 30 марта 2026 -->
   <div class="entry">
     <h2>📊 30 марта, 2026</h2>
-    <h3>Эксперимент: новый признак в регрессии</h3>
-    <p>Добавлен признак <strong>"количество выполненных домашних заданий"</strong> → улучшение качества модели.</p>
-    <ul>
-      <li><strong>MSE (обучение):</strong> <code>0.004438746</code></li>
-      <li><strong>MSE (тест):</strong> <code>0.003977678</code> ✅ снижение ошибки</li>
-    </ul>
-    <p><em>Вывод: Новый признак повысил способность модели к обобщению.</em></p>
-    <hr>
+    <h3>➕ Новый признак: домашки → снижение MSE</h3>
+    <ul><li>MSE train: <code>0.004438</code></li><li>MSE test:  <code>0.003977</code> ✅</li></ul>
     <h3>🧠 Нейронная сеть</h3>
-    <blockquote>Нейросеть не интерпретируема — это важное замечание о природе «чёрных ящиков».</blockquote>
+    <blockquote>Нейросеть не интерпретируема — важная особенность «чёрных ящиков».</blockquote>
   </div>
 
-  <!-- 8 апреля 2026 -->
   <div class="entry">
     <h2>🏥 8 апреля, 2026</h2>
-    <h3>📋 Диаграмма операции</h3>
-    <p>Добавлена схема медицинской операции:</p>
-    <p>📎 <a href="Операция1.drawio.png" title="Схема операции">Операция1.drawio.png</a></p>
+    <p>Медицинская схема: 📎 <a href="Операция1.drawio.png">Операция1.drawio.png</a></p>
   </div>
 
-  <!-- 13 апреля 2026 -->
   <div class="entry">
     <h2>📁 13 апреля, 2026</h2>
-    <h3>🏥 Медицинские диаграммы</h3>
-    <p>Загружены новые файлы с медицинскими схемами:</p>
-    <h4>👨‍⚕️ Врачи:</h4>
+    <p>Врачи, медсестры, стоматология — загружены диаграммы:</p>
     <ul>
-      <li>📎 <a href="Врач1.drawio.png">Врач1.drawio.png</a></li>
-      <li>📎 <a href="Врач2.drawio.png">Врач2.drawio.png</a></li>
-    </ul>
-    <h4>👩‍⚕️ Медперсонал:</h4>
-    <ul>
-      <li>📎 <a href="Медсестра 2.drawio.png">Медсестра 2.drawio.png</a></li>
-      <li>📎 <a href="МКдесстра 1.drawio.png">МКдесстра 1.drawio.png</a></li>
-    </ul>
-    <h4>🔪 Операции:</h4>
-    <ul>
-      <li>📎 <a href="Операция2.drawio.png">Операция2.drawio.png</a></li>
-      <li>📎 <a href="Операция1.drawio(1).png">Операция1.drawio(1).png</a></li>
-    </ul>
-    <h4>🦷 Стоматология:</h4>
-    <ul>
-      <li>📎 <a href="СТОматология1.drawio.png">СТОматология1.drawio.png</a></li>
+      <li><a href="Врач1.drawio.png">Врач1.drawio.png</a> · <a href="Врач2.drawio.png">Врач2.drawio.png</a></li>
+      <li><a href="Медсестра 2.drawio.png">Медсестра 2.drawio.png</a> · <a href="МКдесстра 1.drawio.png">МКдесстра 1.drawio.png</a></li>
+      <li><a href="Операция2.drawio.png">Операция2.drawio.png</a> · <a href="Операция1.drawio(1).png">Операция1(1).png</a></li>
+      <li><a href="СТОматология1.drawio.png">СТОматология1.drawio.png</a></li>
     </ul>
   </div>
 
-  <!-- 22 апреля 2026 -->
   <div class="entry">
     <h2>📅 22 апреля, 2026</h2>
-    <h3>📊 Новая таблица данных</h3>
-    <p>Загрузила новую таблицу с данными для анализа:</p>
-    <p>📥 <a href="Новая таблица 1.xlsx" download title="Скачать таблицу Excel">Скачать таблицу (Excel)</a></p>
-    <p><em>📄 Файл содержит актуальные данные для дальнейшей работы.</em></p>
+    <p>📥 <a href="Новая таблица 1.xlsx" download>Новая таблица 1.xlsx</a> — данные для анализа</p>
   </div>
 
-  <!-- 27 апреля 2026 -->
   <div class="entry">
     <h2>📅 27 апреля, 2026</h2>
-    <h3>📊 Обновление таблицы данных</h3>
-    <p>Загрузила вторую версию таблицы с обновлёнными данными:</p>
-    <p>📥 <a href="Новая таблица 2.xlsx" download title="Скачать таблицу Excel">Скачать таблицу (Excel)</a></p>
-    <p><em>📄 Файл «Новая таблица 2.xlsx» содержит дополнительные данные для анализа.</em></p>
+    <p>📥 <a href="Новая таблица 2.xlsx" download>Новая таблица 2.xlsx</a> — обновлённая версия</p>
   </div>
 
   <footer>
-    ☁️ Дневник исследований · Светлые заметки и тёплые открытия · 2025–2026<br>
-    🕊️ <a href="mailto:fkmv5018@gmail.com">fkmv5018@gmail.com</a> · Все записи подлинны
+    🌿 Дневник исследований · Природные заметки и зелёные открытия 2025–2026<br>
+    🕊️ <a href="mailto:fkmv5018@gmail.com">fkmv5018@gmail.com</a> · записи подлинны
   </footer>
 </div>
 </body>
