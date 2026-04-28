@@ -5,27 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Моя страница | Дневник исследований</title>
   <style>
-    @font-face {
-      font-family: "Pudelinka";
-      src: url("Fonts/pudelinka.ttf") format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
+    /* ========== RESET & ГЛОБАЛЬНЫЕ СТИЛИ ========== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    /* ========== ОСНОВНОЙ ФОН (ИЗМЕНЕН) ========== */
     body {
-      background: linear-gradient(135deg, #f9efdf 0%, #f3e5cf 100%);
+      background: linear-gradient(145deg, #eef2ea 0%, #dadfce 100%);
       font-family: 'Segoe UI', 'Roboto', 'Georgia', serif, sans-serif;
       color: #2c2418;
       padding: 2rem 1.5rem;
       line-height: 1.5;
     }
 
+    /* ========== КОНТЕЙНЕР ДНЕВНИКА ========== */
     .diary-container {
       max-width: 1000px;
       margin: 0 auto;
@@ -37,6 +33,15 @@
       transition: all 0.2s ease;
     }
 
+    /* ========== ШРИФТ PUDELINKA ========== */
+    @font-face {
+      font-family: "Pudelinka";
+      src: url("Fonts/pudelinka.ttf") format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* ========== ЦИТАТА-ЗАСТАВКА ========== */
     .hero-quote {
       font-family: "Pudelinka", 'Georgia', cursive;
       font-size: 1.7rem;
@@ -67,6 +72,7 @@
       vertical-align: top;
     }
 
+    /* ========== КАРТОЧКИ ЗАПИСЕЙ ========== */
     .entry {
       background: #ffffff;
       border-radius: 1.5rem;
@@ -83,6 +89,7 @@
       border-color: #e9cfaa;
     }
 
+    /* ========== ЗАГОЛОВКИ ========== */
     h2 {
       font-size: 1.8rem;
       font-weight: 600;
@@ -110,6 +117,7 @@
       margin: 0.8rem 0 0.4rem;
     }
 
+    /* ========== ТЕКСТ И ТИПОГРАФИКА ========== */
     p {
       margin-bottom: 0.8rem;
       line-height: 1.5;
@@ -157,6 +165,7 @@
       border: 1px solid #ecdbba;
     }
 
+    /* ========== ИКОНКИ И БЭЙДЖИ ========== */
     img {
       max-width: 48px;
       vertical-align: middle;
@@ -186,6 +195,7 @@
       font-weight: normal;
     }
 
+    /* ========== ПОДВАЛ ========== */
     footer {
       text-align: center;
       margin-top: 2.5rem;
@@ -195,6 +205,7 @@
       padding-top: 1.8rem;
     }
 
+    /* ========== АДАПТИВНОСТЬ (MEDIA) ========== */
     @media (max-width: 720px) {
       body {
         padding: 1rem;
@@ -267,22 +278,31 @@
 
   <!-- 19 января 2026 -->
   <div class="entry">
-    <h2>🔐 19 января, 2026</h2>
-    <h3>Решение шифров Цезаря</h3>
+     <h2>19 января, 2026</h2>
+<p>
+  <strong>Решение шифров Цезаря:</strong>
+</p>
+<ul>
+  <li>
+    <strong>Определение ключей шифра Цезаря:</strong>
     <ul>
-      <li><strong>Определение ключей:</strong>
-        <ul>
-          <li>АПЕЛЬСИН → САЦЬНВЩЮ → ключ: <code>+18</code></li>
-          <li>АБРИКОС → ЫЬЛГЕЙМ → ключ: <code>-4</code></li>
-        </ul>
-      </li>
-      <li><strong>Расшифровка:</strong>
-        <ul>
-          <li>ФХНЗКЧ → <strong>ПРИВЕТ</strong> (ключ = 5)</li>
-          <li>ЦЩЕБФ → <strong>ВЕСНА</strong> (ключ = 20)</li>
-        </ul>
-      </li>
-      <li><strong>Шифрование фамилии «Халимов» с ключом 10:</strong> <code>чкфсчэл</code></li>
+      <li>а. АПЕЛЬСИН → САЦЬНВЩЮ → Ключ: <code>+18</code></li>
+      <li>б. АБРИКОС → ЫЬЛГЕЙМ → Ключ: <code>-4</code></li>
+    </ul>
+  </li>
+  <li>
+    <strong>Расшифровка сообщений:</strong>
+    <ul>
+      <li>а. ФХНЗКЧ → <strong>ПРИВЕТ</strong> (ключ = 5)</li>
+      <li>б. ЦЩЕБФ → <strong>ВЕСНА</strong> (ключ = 20)</li>
+    </ul>
+  </li>
+  <li>
+    <li><strong>Шифрование фамилии «магандалиева» с k = 10:</strong> <code>чкмквткнопк</code></li>
+  </ul>
+
+  <p>Домен - fkmv5018 github io . </p>
+  <p><a href="mailto:fkmv5018@gmail.com">Напиши мне</a></p>
     </ul>
   </div>
 
@@ -350,7 +370,8 @@
     <h3>🧠 Нейронная сеть</h3>
     <blockquote>Нейросеть не интерпретируема — это важное замечание о природе «чёрных ящиков».</blockquote>
   </div>
-<!-- 8 апреля 2026 -->
+
+  <!-- 8 апреля 2026 -->
   <div class="entry">
     <h2>🏥 8 апреля, 2026</h2>
     <h3>📋 Диаграмма операции</h3>
@@ -361,7 +382,8 @@
       </a>
     </p>
   </div>
-    <!-- 13 апреля 2026 -->
+
+  <!-- 13 апреля 2026 -->
   <div class="entry">
     <h2>📁 13 апреля, 2026</h2>
     <h3>🏥 Медицинские диаграммы</h3>
@@ -390,6 +412,7 @@
       <li>📎 <a href="СТОматология1.drawio.png">СТОматология1.drawio.png</a></li>
     </ul>
   </div>
+
   <!-- 22 апреля 2026 -->
   <div class="entry">
     <h2>📅 22 апреля, 2026</h2>
@@ -403,7 +426,7 @@
     <p><em>📄 Файл содержит актуальные данные для дальнейшей работы.</em></p>
   </div>
 
-  <!-- 27 апреля 2026 (НОВАЯ ЗАПИСЬ) -->
+  <!-- 27 апреля 2026 -->
   <div class="entry">
     <h2>📅 27 апреля, 2026</h2>
     <h3>📊 Обновление таблицы данных</h3>
@@ -417,9 +440,7 @@
   </div>
 
   <footer>
-    🌟 Дневник исследований · Все записи подлинны · Вдохновлено машинным обучением и творчеством<br>
-    🕸️ <a href="mailto:titov2041@gmail.com">titov2041@gmail.com</a> · 2025–2026
-  </footer>
+  
 </div>
 </body>
 </html>
