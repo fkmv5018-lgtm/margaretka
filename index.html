@@ -1,11 +1,9 @@
-Вот обновленная версия страницы — с полностью новым, более современным и «космическим» оформлением. Фон стал глубоким темно-синим с мягким свечением, карточки записей — полупрозрачными и светящимися, а типографика — более чистой и технологичной.
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Дневник исследований | Темная материя знаний</title>
+  <title>Дневник исследований | Светлые заметки</title>
   <style>
     /* ========== RESET & ГЛОБАЛЬНЫЕ СТИЛИ ========== */
     * {
@@ -14,13 +12,13 @@
       box-sizing: border-box;
     }
 
-    /* ========== НОВЫЙ ФОН: ГЛУБОКОЕ КОСМИЧЕСКОЕ НЕБО ========== */
+    /* ========== НОВЫЙ СВЕТЛЫЙ ВОЗДУШНЫЙ ФОН ========== */
     body {
-      background: radial-gradient(circle at 10% 20%, #0a0f2a, #03050b);
+      background: linear-gradient(135deg, #fff9f0 0%, #ffe8d6 100%);
       font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Roboto', sans-serif;
-      color: #eef2ff;
+      color: #3d3226;
       padding: 2rem 1.5rem;
-      line-height: 1.5;
+      line-height: 1.55;
       min-height: 100vh;
     }
 
@@ -28,15 +26,15 @@
     .diary-container {
       max-width: 1100px;
       margin: 0 auto;
-      background: rgba(15, 20, 35, 0.55);
-      backdrop-filter: blur(3px);
-      border-radius: 2.5rem;
-      box-shadow: 0 30px 45px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(90, 150, 220, 0.2);
+      background: rgba(255, 252, 245, 0.92);
+      backdrop-filter: blur(2px);
+      border-radius: 2rem;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 215, 170, 0.5);
       padding: 2rem 2rem 3rem;
       transition: all 0.3s ease;
     }
 
-    /* ========== ШРИФТ PUDELINKA (оставлен для цитаты) ========== */
+    /* ========== ШРИФТ PUDELINKA ========== */
     @font-face {
       font-family: "Pudelinka";
       src: url("Fonts/pudelinka.ttf") format('truetype');
@@ -47,107 +45,95 @@
     /* ========== ЦИТАТА-ЗАСТАВКА ========== */
     .hero-quote {
       font-family: "Pudelinka", 'Georgia', cursive;
-      font-size: 1.9rem;
+      font-size: 1.8rem;
       text-align: center;
-      color: #ffdfb3;
-      background: rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(8px);
-      padding: 1.8rem 1rem;
+      color: #c27e3a;
+      background: linear-gradient(145deg, #fff5e8, #ffefdf);
+      padding: 1.6rem 1rem;
       border-radius: 3rem;
-      margin-bottom: 2.8rem;
-      border: 1px solid rgba(255, 200, 120, 0.35);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+      margin-bottom: 2.5rem;
+      border: 1px solid #ffe0c0;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
       font-weight: normal;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      letter-spacing: 0.8px;
     }
 
     .hero-quote::before {
-      content: "✨";
-      font-size: 2rem;
+      content: "🌸";
+      font-size: 1.8rem;
       margin-right: 10px;
-      color: #ffcd94;
     }
 
     .hero-quote::after {
-      content: "✨";
-      font-size: 2rem;
+      content: "🌸";
+      font-size: 1.8rem;
       margin-left: 10px;
-      color: #ffcd94;
     }
 
-    /* ========== КАРТОЧКИ ЗАПИСЕЙ (СТЕКЛЯННЫЙ ЭФФЕКТ) ========== */
+    /* ========== КАРТОЧКИ ЗАПИСЕЙ (СВЕТЛЫЕ, ЧИСТЫЕ) ========== */
     .entry {
-      background: rgba(22, 28, 46, 0.7);
-      backdrop-filter: blur(10px);
-      border-radius: 1.8rem;
+      background: #ffffff;
+      border-radius: 1.5rem;
       padding: 1.6rem 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 10px 22px -8px rgba(0, 0, 0, 0.4);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s;
-      border: 1px solid rgba(80, 130, 200, 0.25);
+      margin-bottom: 1.8rem;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid #feeddd;
     }
 
     .entry:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 22px 32px -12px rgba(0, 0, 0, 0.6);
-      border-color: rgba(120, 180, 255, 0.6);
-      background: rgba(28, 34, 56, 0.8);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 28px -10px rgba(0, 0, 0, 0.12);
+      border-color: #ffe0c4;
     }
 
     /* ========== ЗАГОЛОВКИ ========== */
     h2 {
-      font-size: 1.9rem;
+      font-size: 1.85rem;
       font-weight: 600;
-      color: #ffddb0;
-      border-left: 5px solid #ffaa66;
-      padding-left: 1.2rem;
+      color: #b45f2b;
+      border-left: 5px solid #f0bc7a;
+      padding-left: 1.1rem;
       margin-bottom: 1rem;
       margin-top: 0;
       letter-spacing: -0.3px;
-      background: linear-gradient(135deg, #ffe6c7, #ffd6a5);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
 
     h3 {
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       font-weight: 600;
-      color: #ffcd94;
-      margin: 1.2rem 0 0.7rem 0;
+      color: #c57f48;
+      margin: 1.1rem 0 0.7rem 0;
       display: inline-block;
-      border-bottom: 2px solid #ffaa6680;
-      letter-spacing: -0.2px;
+      border-bottom: 2px solid #f7d9b5;
+      padding-bottom: 0.1rem;
     }
 
     h4 {
       font-size: 1.2rem;
       font-weight: 600;
-      color: #ffbc7a;
-      margin: 0.8rem 0 0.4rem;
+      color: #d69555;
+      margin: 0.7rem 0 0.4rem;
     }
 
     /* ========== ТЕКСТ И ТИПОГРАФИКА ========== */
     p {
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.75rem;
       line-height: 1.55;
-      color: #e2e9ff;
+      color: #4a3b2c;
     }
 
     a {
-      color: #ffbc70;
+      color: #d27f3c;
       text-decoration: none;
       font-weight: 500;
-      border-bottom: 1px dashed #ffaa6660;
+      border-bottom: 1px solid #f8cfaa;
       transition: 0.2s;
     }
 
     a:hover {
-      color: #ffdaa0;
-      border-bottom-color: #ffbc70;
-      text-shadow: 0 0 3px #ffa03340;
+      color: #aa5a24;
+      border-bottom-color: #d27f3c;
     }
 
     ul, ol {
@@ -155,74 +141,70 @@
     }
 
     li {
-      margin: 0.4rem 0;
-      color: #d6e2ff;
+      margin: 0.35rem 0;
+      color: #5a4634;
     }
 
     blockquote {
-      background: rgba(0, 0, 0, 0.45);
-      border-left: 5px solid #ffaa66;
-      padding: 0.8rem 1.4rem;
+      background: #fffbf2;
+      border-left: 5px solid #f0bc7a;
+      padding: 0.7rem 1.2rem;
       margin: 1rem 0;
-      border-radius: 1.4rem;
+      border-radius: 1rem;
       font-style: normal;
-      color: #ffefcf;
+      color: #8b6240;
       font-weight: 450;
-      backdrop-filter: blur(4px);
     }
 
     code {
-      background: #0d1222;
+      background: #fef3e6;
       padding: 0.2rem 0.6rem;
-      border-radius: 14px;
+      border-radius: 12px;
       font-family: 'JetBrains Mono', 'Fira Code', monospace;
       font-size: 0.9em;
-      color: #ffcd8a;
-      border: 1px solid #ffaa6640;
+      color: #c4712c;
+      border: 1px solid #f7debe;
     }
 
     /* ========== ИКОНКИ И БЭЙДЖИ ========== */
     img {
-      max-width: 46px;
+      max-width: 44px;
       vertical-align: middle;
       margin-right: 10px;
-      filter: drop-shadow(0 0 4px #ffd27a);
       transition: 0.2s;
     }
 
     img:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 8px #ffbc70);
+      transform: scale(1.03);
     }
 
     hr {
-      margin: 1.4rem 0;
+      margin: 1.2rem 0;
       border: none;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #ffbb7770, #ffaa66, #ffbb7770, transparent);
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #f7d9b5, #f0bc7a, #f7d9b5, transparent);
     }
 
     .badge-ml {
-      background: #1e2a3e80;
-      backdrop-filter: blur(4px);
-      color: #ffddb0;
-      font-size: 0.72rem;
+      background: #fdf0e2;
+      color: #b7602a;
+      font-size: 0.7rem;
       border-radius: 40px;
       padding: 0.2rem 0.9rem;
       display: inline-block;
       margin-right: 0.6rem;
       font-weight: 500;
-      border: 1px solid #ffaa6660;
+      border: 1px solid #fed5aa;
     }
 
     /* ========== ПОДВАЛ ========== */
     footer {
       text-align: center;
-      margin-top: 2.5rem;
+      margin-top: 2.2rem;
       font-size: 0.85rem;
-      color: #8fa2cf;
-      border-top: 1px solid #2a3456;
-      padding-top: 1.8rem;
+      color: #bc8f64;
+      border-top: 1px solid #ffe0c4;
+      padding-top: 1.5rem;
     }
 
     /* ========== АДАПТИВНОСТЬ ========== */
@@ -240,7 +222,7 @@
         font-size: 1.55rem;
       }
       .hero-quote {
-        font-size: 1.35rem;
+        font-size: 1.25rem;
       }
     }
   </style>
@@ -289,14 +271,14 @@
     <p>куратор-2</p>
   </div>
 
-  <!-- 14 января 2026 (обновленный блок) -->
+  <!-- 14 января 2026 -->
   <div class="entry">
     <h2>🌐 14 января, 2026</h2>
     <p>📡 Домен: <code>fkmv5018.github.io</code></p>
     <p>📧 <a href="mailto:fkmv5018@gmail.com">Напишите мне</a></p>
   </div>
 
-  <!-- 19 января 2026 - полностью обновлено под новые данные -->
+  <!-- 19 января 2026 -->
   <div class="entry">
     <h2>🔐 19 января, 2026</h2>
     <p><strong>Решение шифров Цезаря:</strong></p>
@@ -437,10 +419,9 @@
   </div>
 
   <footer>
-    🌌 Дневник исследований · Глубокое обучение и творчество · 2025–2026<br>
-    🕸️ <a href="mailto:fkmv5018@gmail.com">fkmv5018@gmail.com</a> · Все записи подлинны
+    ☁️ Дневник исследований · Светлые заметки и тёплые открытия · 2025–2026<br>
+    🕊️ <a href="mailto:fkmv5018@gmail.com">fkmv5018@gmail.com</a> · Все записи подлинны
   </footer>
 </div>
 </body>
 </html>
-```
